@@ -20,7 +20,7 @@ public class Snake : MonoBehaviour
     void Start()
     {
         length = intialLen;
-        InvokeRepeating(nameof(this.Move), 0.09f, 0.09f);
+        InvokeRepeating(nameof(this.Move), 0.05f, 0.05f);
 
         var rootObjcs = gameObject.scene.GetRootGameObjects();
         var layout = (from c in rootObjcs where c.name.Contains("Layout") select c).First();
@@ -109,6 +109,11 @@ public class Snake : MonoBehaviour
             SpawnFood.EatOne();
         }
         else if(collision.tag.Contains("Border"))
+        {
+            GameController.FailGame();
+            //TODO:YOU LOSE SCREEN
+        }
+        else if (collision.tag.Contains("Tail"))
         {
             GameController.FailGame();
             //TODO:YOU LOSE SCREEN

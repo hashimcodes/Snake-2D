@@ -57,7 +57,7 @@ public class GameController : MonoBehaviour
         var exitBtn = (Button)(from b in buttons where b.name.Contains("Exit") select b).First();
         exitBtn.onClick.AddListener(() =>
         {
-            GameController.MainMenu();
+            GameController.ExitGame();
         });
 
 
